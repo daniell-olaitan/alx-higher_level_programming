@@ -4,6 +4,7 @@ def is_alpha(c):
         return True
     return False
 
+
 def is_lowercase(c):
     lowest_char = ord('a')
     highest_char = ord('z')
@@ -11,6 +12,7 @@ def is_lowercase(c):
     if lowest_char <= c <= highest_char:
         return True
     return False
+
 
 def uppercase(str):
     lowest_lowercase = ord('a')
