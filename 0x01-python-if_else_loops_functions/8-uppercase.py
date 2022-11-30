@@ -19,8 +19,5 @@ def uppercase(str):
     for c in str:
         if is_alpha(c) and is_lowercase(c):
             c = chr(ord(c) + difference)
-        print(c, end='')
-    print()
-
-uppercase('best')
-uppercase('Best oF luCk')
+        print("{}".format(c), end='')
+    print("{}".format(''))
