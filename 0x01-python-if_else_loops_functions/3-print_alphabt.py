@@ -5,7 +5,7 @@ while True:
     if alphabet == 'q' or alphabet == 'e':
         asci = asci + 1
         continue
-    print(alphabet, end="")
+    print("{}".format(alphabet), end="")
     if alphabet == 'z':
         break
     asci = asci + 1
