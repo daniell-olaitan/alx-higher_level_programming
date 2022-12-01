@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from sys, import argv
+from sys import argv
 if __name__ == '__main__':
     arg_len = len(argv) - 1
     if arg_len == 1:
