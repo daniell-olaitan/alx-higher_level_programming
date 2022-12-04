@@ -8,10 +8,11 @@ def print_matrix_integer(matrix=[[]]):
     for row in matrix:
         row_len = len(row) - 1
         i = 0
+
         for element in row:
             if i == row_len:
-                print("{}".format(element))
+                print("{:d}".format(element))
             else:
-                print("{} ".format(element), end='')
+                print("{:d} ".format(element), end='')
 
             i += 1
