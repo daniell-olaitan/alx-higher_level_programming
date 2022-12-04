@@ -5,14 +5,15 @@ def print_matrix_integer(matrix=[[]]):
     Args:
         matrix: the given matrix of numbers
     """
-    for row in matrix:
-        row_len = len(row) - 1
-        i = 0
+   if matrix:
+       for row in matrix:
+           row_len = len(row) - 1
+           i = 0
 
-        for element in row:
-            if i == row_len:
-                print("{:d}".format(element))
-            else:
-                print("{:d} ".format(element), end='')
+           for element in row:
+               if i == row_len:
+                   print("{:d}".format(element))
+               else:
+                   print("{:d} ".format(element), end='')
 
-            i += 1
+                   i += 1
