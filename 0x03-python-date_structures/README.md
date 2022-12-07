@@ -1,1 +1,0 @@
-Directory for all the tasks in Python Data Structures.
