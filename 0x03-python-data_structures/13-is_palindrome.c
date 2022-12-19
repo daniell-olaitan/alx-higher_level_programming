@@ -57,10 +57,11 @@ listint_t *reverse_list(listint_t *head)
  */
 listint_t *add_node(listint_t *head, int data)
 {
-	listint_t h;
+	listint_t h, *adr;
 
 	h.n = data;
 	h.next = head;
+	adr = &h;
 
-	return (&h);
+	return (adr);
 }
