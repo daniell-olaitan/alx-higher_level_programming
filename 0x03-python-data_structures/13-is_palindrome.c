@@ -23,7 +23,7 @@ int is_palindrome(listint_t **head)
 		if (int_array == NULL)
 			exit(1);
 
-		return (is_palindrome_recursive(int_array));
+		return (is_palindrome_recursive(int_array, 0, len - 1));
 	}
 }
 
@@ -68,7 +68,7 @@ int *convert_to_array(listint_t *head, size_t len)
 	{
 		int_arr[idx] = current->n;
 		idx++;
-		current = current-next;
+		current = current->next;
 	}
 
 	return (int_arr);
@@ -82,7 +82,7 @@ int *convert_to_array(listint_t *head, size_t len)
  *
  * Return: 1 if palindrome, 0 if otherwise
  */
-int is_palindrome_recursive(int *arr, size_t i, sie_t j)
+int is_palindrome_recursive(int *arr, size_t i, size_t j)
 {
 	int l;
 
