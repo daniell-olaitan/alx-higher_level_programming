@@ -1,8 +1,8 @@
 #include "lists.h"
 
 size_t list_len(listint_t *head);
-int *convert_to_array(listint_t *head, size_t len);
-int is_palindrome_recursive(int *arr, size_t i, size_t j);
+int fetch_node(listint_t *head, size_t index);
+int is_palindrome_r(listint_t *head, size_t h_idx, size_t t_idx);
 
 /**
  * is_palindrome - checks if a singly linked list is a palindrome
@@ -12,19 +12,11 @@ int is_palindrome_recursive(int *arr, size_t i, size_t j);
  */
 int is_palindrome(listint_t **head)
 {
-	int *int_array;
 	size_t len = list_len(*head);
 	if (len < 2)
 		return (1);
 
-	else
-	{
-		int_array = convert_to_array(*head, len);
-		if (int_array == NULL)
-			exit(1);
-
-		return (is_palindrome_recursive(int_array, 0, len - 1));
-	}
+	return (is_palindrome_r(*head, 0, len - 1));
 }
 
 /**
@@ -48,49 +40,44 @@ size_t list_len(listint_t *head)
 }
 
 /**
- * convert_to_array - converts a singly linked list to array
- * @head: pointer to the head of the list
- * @len: length of the list
+ * fetch_node - fetches the data in the given index of a linked list
+ * @head: pointer to the heado of the given list
+ * @index: the index to be fetched
  *
- * Return: pointer to the array
+ * Return: data fetched from the index
  */
-int *convert_to_array(listint_t *head, size_t len)
+int fetch_node(listint_t *head, size_t index)
 {
-	listint_t *current = head;
-	int *int_arr;
 	size_t idx = 0;
 
-	int_arr = malloc(sizeof(int) * len);
-	if (int_arr == NULL)
-		return (NULL);
-
-	while (current != NULL)
+	while (idx < index)
 	{
-		int_arr[idx] = current->n;
+		head = head->next;
 		idx++;
-		current = current->next;
 	}
 
-	return (int_arr);
+	return (head->n);
 }
 
 /**
- * is_palindrome_recursive - checks if an array is a palindrome
- * @arr: array of integer
- * @i:...
- * @j:...
+ * is_palindrome_r - checks if an array is a palindrome recursively
+ * @head: the head node
+ * @h_idx: head index
+ * @t_idx: tail index
  *
  * Return: 1 if palindrome, 0 if otherwise
  */
-int is_palindrome_recursive(int *arr, size_t i, size_t j)
+int is_palindrome_r(listint_t *head, size_t h_idx, size_t t_idx)
 {
-	int l;
+	int a, b, l;
 
-	l = j - i;
+	l = t_idx - h_idx;
 	if (l < 1)
 		return (1);
 
-	if ((arr[i] == arr[j]) && is_palindrome_recursive(arr, ++i, --j))
+	a = fetch_node(head, h_idx);
+	b = fetch_node(head, t_idx);
+	if ((a == b) && is_palindrome_r(head, ++h_idx, --t_idx))
 		return (1);
 
 	return (0);
