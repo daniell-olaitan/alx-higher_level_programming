@@ -1,7 +1,8 @@
 #include "lists.h"
 
-listint_t *reverse_list(listint_t *head);
-listint_t *add_node(listint_t *head, int data);
+listint_t *reverse_half(listint_t *head);
+void r_reverse(listint_t *head, listint_t *tail);
+listint_t *fetch_node(listint_t *head, size_t idx);
 
 /**
  * is_palindrome - checks if a singly linked list is a palindrome
@@ -11,57 +12,98 @@ listint_t *add_node(listint_t *head, int data);
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *h = *head, *t;
+	size_t len = 0;
+	listint_t *h = *head, *t, *prev;
+	listint_t *current = *head, *node;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (h == NULL || h->next == NULL)
 		return (1);
 
-	t = reverse_list(*head);
-	while (h != NULL)
+	while (current != NULL)
+	{
+		len++;
+		current = current->next;
+	}
+
+	len = (len - 1) / 2;
+	node = fetch_node(h, len);
+	t = reverse_half(node);
+	prev = t;
+	while (h != t && h != prev)
 	{
 		if (h->n != t->n)
+		{
+			r_reverse(node, t);
 			return (0);
+		}
 
+		prev = t;
 		t = t->next;
 		h = h->next;
 	}
 
+	r_reverse(node, t);
 	return (1);
 }
 
 /**
- * reverse_list - reverses a given singly linked list
- * @head: pointer to the head of the list
+ * reverse_half - reverses the second half of the given singly linked list
+ * @head: pointer to the beginning of the second half of the list
  *
  * Return: the reversed list
  */
-listint_t *reverse_list(listint_t *head)
+listint_t *reverse_half(listint_t *head)
 {
-	listint_t *h = NULL, *current = head;
+	listint_t *prev = head, *next = head, *current = head->next;
 
-	while (current != NULL)
+	while (next != NULL)
 	{
-		h = add_node(h, current->n);
-		current = current->next;
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		if (next != NULL)
+			current = next;
 	}
 
-	return (h);
+	return (current);
 }
 
 /**
- * add_node - adds a node as the head of a list
- * @head: the head of the list
- * @data: the data of the node
+ * r_reverse - rereverses a reversed list
+ * @head: pointer to the head of the list
+ * @tail: pointer to the tail of the list
  *
- * Return: pointer to the head of the list
  */
-listint_t *add_node(listint_t *head, int data)
+void r_reverse(listint_t *head, listint_t *tail)
 {
-	listint_t h, *adr;
+	listint_t *prev = NULL, *next = tail, *current = tail;
 
-	h.n = data;
-	h.next = head;
-	adr = &h;
+	while (next != head)
+	{
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+}
 
-	return (adr);
+/**
+ * fetch_node - fetches the node corresponding to a given index
+ * @head: pointer to the head of the list
+ * @idx: the given index
+ *
+ * Return: pointer to the node
+ */
+listint_t *fetch_node(listint_t *head, size_t idx)
+{
+	size_t i = 0;
+	listint_t *current = head;
+
+	while (i < idx)
+	{
+		current = current->next;
+		i++;
+	}
+
+	return (current);
 }
