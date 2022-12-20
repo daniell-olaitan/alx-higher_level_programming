@@ -1,7 +1,7 @@
 #include "lists.h"
 
 listint_t *reverse_half(listint_t *head);
-void r_reverse(listint_t *head, listint_t *tail);
+void r_reverse(listint_t *tail);
 listint_t *fetch_node(listint_t *head, size_t idx);
 
 /**
@@ -13,7 +13,7 @@ listint_t *fetch_node(listint_t *head, size_t idx);
 int is_palindrome(listint_t **head)
 {
 	size_t len = 0;
-	listint_t *h = *head, *t, *prev;
+	listint_t *h = *head, *t;
 	listint_t *current = *head, *node;
 
 	if (h == NULL || h->next == NULL)
@@ -28,21 +28,19 @@ int is_palindrome(listint_t **head)
 	len = (len - 1) / 2;
 	node = fetch_node(h, len);
 	t = reverse_half(node);
-	prev = t;
-	while (h != t && h != prev)
+	while (t != NULL)
 	{
 		if (h->n != t->n)
 		{
-			r_reverse(node, t);
+			r_reverse(t);
 			return (0);
 		}
 
-		prev = t;
 		t = t->next;
 		h = h->next;
 	}
 
-	r_reverse(node, t);
+	r_reverse(t);
 	return (1);
 }
 
@@ -54,7 +52,7 @@ int is_palindrome(listint_t **head)
  */
 listint_t *reverse_half(listint_t *head)
 {
-	listint_t *prev = head, *next = head, *current = head->next;
+	listint_t *prev = NULL, *next = head, *current = head->next;
 
 	while (next != NULL)
 	{
@@ -70,15 +68,14 @@ listint_t *reverse_half(listint_t *head)
 
 /**
  * r_reverse - rereverses a reversed list
- * @head: pointer to the head of the list
  * @tail: pointer to the tail of the list
  *
  */
-void r_reverse(listint_t *head, listint_t *tail)
+void r_reverse(listint_t *tail)
 {
 	listint_t *prev = NULL, *next = tail, *current = tail;
 
-	while (next != head)
+	while (next != NULL)
 	{
 		next = current->next;
 		current->next = prev;
