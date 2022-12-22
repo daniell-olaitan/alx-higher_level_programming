@@ -22,4 +22,6 @@ def roman_to_int(roman_string):
             else:
                 res.append(value)
 
-        return sum(res)
+    return sum(res)
+
+print(roman_to_int('DCCVII'))
