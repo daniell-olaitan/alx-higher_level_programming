@@ -13,10 +13,10 @@ def list_division(my_list_1, my_list_2, list_length):
     res = []
     for i in range(0, list_length):
         try:
-            a = float(my_list_1[i])
-            b = float(my_list_2[i])
+            a = my_list_1[i]
+            b = my_list_2[i]
             result = a / b
-        except (ValueError, TypeError):
+        except TypeError:
             print("wrong type")
             result = 0
         except IndexError:
