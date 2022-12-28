@@ -9,7 +9,7 @@ class Square:
     Attributes:
         __size: the length of the square
     """
-    def __init__(self, size=0, position=(0,0)):
+    def __init__(self, size=0, position=(0, 0)):
         """initializes size
 
         Args:
@@ -47,7 +47,7 @@ class Square:
             type(value[1]) is int and
             value[0] >= 0 and
             value[1] >= 0):
-            #end of if
+            # end of if
             self.__position = value
         else:
             raise TypeError("position must be a tuple of 2 positive integers")
@@ -66,9 +66,13 @@ class Square:
         if self.size == 0:
             print()
         else:
+            for in range(self.position[1]):
+                print()
+
             for i in range(self.size):
                 for j in range(self.position[0]):
                     print(" ", end="")
+
                 for j in range(self.size):
                     print("#", end='')
 
