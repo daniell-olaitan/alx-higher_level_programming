@@ -72,6 +72,9 @@ class Square:
 
     def __str__(self):
         res = []
+        if self.size == 0:
+            return "\n"
+
         for i in range(self.size):
             res.append(" "*self.position[0] + "#"*self.size)
 
