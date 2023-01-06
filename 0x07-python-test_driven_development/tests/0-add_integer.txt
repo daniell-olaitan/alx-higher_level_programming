@@ -14,8 +14,11 @@ Traceback (most recent call last):
   ...
 TypeError: a must be an integer
 
->>> add_integer(1.5)
+>>> add_integer(1.0)
 99
+
+>> add_integer(1.0, 2.0)
+3
 
 >>> add_integer(34, 4)
 38
@@ -34,7 +37,7 @@ Traceback (most recent call last):
   ...
 ValueError: cannot convert float NaN to integer
 
->>> add_integer(10.0**5000, 3)
+>>> add_integer(1e500, 3)
 Traceback (most recent call last):
-  ...
-OverflowError: (34, 'Numerical result out of range')
+  File "<stdin>", line 1, in <module>
+OverflowError: cannot convert float infinity to integer
