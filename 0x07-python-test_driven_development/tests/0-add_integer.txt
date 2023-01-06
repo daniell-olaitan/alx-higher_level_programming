@@ -2,6 +2,7 @@ Test Case for 0-add_integer
 ===========================
 
 >>> add_integer = __import__('0-add_integer').add_integer
+>>> import math
 
 >>> add_integer(3, [3])
 Traceback (most recent call last):
@@ -18,3 +19,22 @@ TypeError: a must be an integer
 
 >>> add_integer(34, 4)
 38
+
+>>> add_integer(2)
+100
+
+>>> add_integer()
+Traceback (most recent call last):
+ ...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+
+
+>>> add_integer(math.nan, 2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: cannot convert float NaN to integer
+
+>>> add_integer(10.0**500, 3)
+Traceback (most recent call last):
+  ...
+OverflowError: (34, 'Numerical result out of range')
