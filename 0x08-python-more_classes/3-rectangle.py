@@ -61,6 +61,7 @@ class Rectangle:
         return 0
 
     def __str__(self):
+        """returns the string rep of the rectangle"""
         res = []
         if self.perimeter() == 0:
             return ""
