@@ -40,6 +40,10 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """initialises __width and __height
+
+        Args:
+            width: ..
+            height: ..
         """
         self.width = width
         self.height = height
