@@ -6,12 +6,6 @@
 class Rectangle:
     """this represents a rectangle
     """
-    def __init__(self, width=0, height=0):
-        """Initializing this rectangle class
-        """
-        self.width = width
-        self.height = height
-
     @property
     def width(self):
         """retrieves width attribute
@@ -62,3 +56,9 @@ class Rectangle:
             if column < self.__height - 1:
                 rectangle += "\n"
         return (rectangle)
+
+    def __init__(self, width=0, height=0):
+        """Initializing this rectangle class
+        """
+        self.width = width
+        self.height = height
