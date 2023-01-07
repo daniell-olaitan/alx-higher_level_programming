@@ -14,8 +14,11 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     res = split_and_strip([text], chars)
-    for s in res:
-        print(s + '\n')
+    s = "\n\n".join(res)
+    if s[-1] in chars:
+        s = s + "\n\n"
+
+    print(s, end="")
 
 
 def split_and_strip(lst, sep):
