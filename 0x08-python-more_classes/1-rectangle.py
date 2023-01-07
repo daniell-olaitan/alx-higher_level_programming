@@ -12,6 +12,10 @@ class Rectangle:
         Args:
             width: ..
             height: ..
+
+        raises:
+            TypeError: when int is not given
+            ValueError: when value is < 0
         """
         self.width = width
         self.height = height
