@@ -1,0 +1,31 @@
+=======================
+text_indentation module
+=======================
+
+Imports and variables
+=====================
+	>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Incomplete Args
+===============
+	>>> text_indentation()
+	Traceback (most recent call last):
+	  ...
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+Incorrect Args
+==============
+	>>> text_indentation(['text'])
+	Traceback (most recent call last):
+	  ...
+	TypeError: text must be a string
+
+Correct Args
+============
+	>>> text_indentation("What? Name is: Olaitan Daniel.")
+	What?
+	<BLANKLINE>
+	Name is:
+	<BLANKLINE>
+	Olaitan Daniel.
+	<BLANKLINE>
