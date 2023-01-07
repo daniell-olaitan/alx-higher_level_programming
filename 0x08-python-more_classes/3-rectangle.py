@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""contains a class that defines a rectangle class"""
-
+"""module contains a class that defines a rectangle"""
 
 class Rectangle:
     """defines a rectangle
