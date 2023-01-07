@@ -1,0 +1,72 @@
+============================
+1. Matrix Division Module
+============================
+
+Import and variables
+=======================
+	>>> matrix_div = __import__("2-matrix_divided").matrix_divided
+	>>> a = [2, 1.2]
+	>>> b = [4, 6]
+	>>> c = [a, b]
+
+Incorrect/Incomplete Parameters
+================================
+
+Test Case 1: matrix parameter is absent
+     >>> matrix_div(3)
+     Traceback (most recent call last):
+       ...
+     TypeError: matrix_div() missing 1 required positional argument: 'div'
+
+     >>> matrix_div()
+     Traceback (most recent call last):
+       ...
+     TypeError: matrix_div() missing 2 required positional argument: 'matrix and 'div'
+
+Test Case 3: matrix incorrect
+     >>> matrix_div([[2, 1.2], [5]], 3)
+     Traceback (most recent call last):
+       ...
+     TypeError: Each row of the matrix must have the same size
+
+     >>> matrix_div([[2, 1.2], {5, 3}], 3)
+     Traceback (most recent call last):
+       ...
+     TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+     >>> matrix_div({[2, 1.2], [5, 3]}, 3)
+     Traceback (most recent call last):
+       ...
+     TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Div incorrect
+    >>> matrix_div([[2, 2.2], b], '3')
+    Traceback (most recent call last):
+       ...
+    TypeError: div must be a number
+
+    >>> matrix_div([a, b], [2])
+    Traceback (most recent call last):
+       ...
+    TypeError: div must be a number
+
+    >>> matrix_div(c, 0)
+    Traceback (most recent call last):
+     ...
+    ZeroDivisionError: division by zero
+
+    >>> matrix_div([[float('nan'), float('inf')], b], float('nan'))
+    [[nan, nan], [nan, nan]]
+
+    >>> matrix_div([[float('nan'), float('inf')], b], float('inf'))
+    [[nan, nan], [0.0, 0.0]]
+
+    >>> matrix_div([[float('nan'), float('inf')], b], 2)
+    [[nan, inf], [2.0, 3.0]]
+
+Correct parameters
+    >>> matrix_div(c, 2.1)
+    [[0.95, 0.57], [1.90, 2.86]]
+
+    >>> matrix_div(c, 3)
+    [[0.67, 0.40], [1.33, 2.0]]
