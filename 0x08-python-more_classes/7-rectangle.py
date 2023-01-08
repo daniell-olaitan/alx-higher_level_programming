@@ -6,6 +6,8 @@ class Rectangle:
     """this represents a rectangle"""
 
     number_of_instances = 0
+    print_symbol = '#'
+
     def __init__(self, width=0, height=0):
         """Initializing this rectangle class
         Args:
@@ -69,7 +71,7 @@ class Rectangle:
             return ""
 
         for i in range(self.height):
-            res.append("#" * self.width)
+            res.append(str(print_symbol) * self.width)
 
         return "\n".join(res)
 
