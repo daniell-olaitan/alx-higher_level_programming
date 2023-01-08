@@ -1,8 +1,13 @@
 #!/usr/bin/python3
+"""module contains Magic class
+"""
+
 import math
 
 
 class MagicClass:
+    """Magic Class class
+    """
     def __init__(self, radius):
         self.__radius = 0
         if type(radius) is not int and type(radius) is not float:
