@@ -1,4 +1,14 @@
 #!/usr/bin/python3
+"""BaseGeometry
+"""
+
+
 class BaseGeometry:
+    """Contains a function area()
+    """
+
     def area(self):
-        raise Exception('area() is not implemented')
+        """Function not implemented yet
+        """
+
+        raise Exception("area() is not implemented")

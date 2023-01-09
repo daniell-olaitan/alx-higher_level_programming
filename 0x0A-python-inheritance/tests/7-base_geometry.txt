@@ -1,162 +1,69 @@
-===============================
-7. Integer validator module
-===============================
+Using class ``BaseGeometry``
+-----------------------
 
-Import module:
-==============
+Class BaseGeometry contains functions that validates given parameters
+Currently contains function area(): not implemented
+Currently contains function integer_validator(name, value):
+  - Validates `value` if it is an integer
+  - Returns nothing if True
+
+First import class ``BaseGeometry``
+
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Now use it:
+
+Function area():
     >>> bg = BaseGeometry()
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
 
+Function integer_validator basic usage:
+    >>> bg.integer_validator("holberton", 98)
 
-Function:
-=========
-Write a class BaseGeometry (based on 6-base_geometry.py).
+Function integer_validator 0 input usage:
+    >>> bg.integer_validator("holberton", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: holberton must be greater than 0
 
-    * You can assume name is always a string
-    * If value is not an integer: raises a TypeError exception
-    * If value is less or equal to 0: raises a ValueError exception
+Function integer_validator negative input usage:
+    >>> bg.integer_validator("holberton", -1)
+    Traceback (most recent call last):
+    ...
+    ValueError: holberton must be greater than 0
 
+Function integer_validator non int input usage:
+    >>> bg.integer_validator("holberton", "school")
+    Traceback (most recent call last):
+    ...
+    TypeError: holberton must be an integer
 
-Section // No exceptions
-=========================
+Function integer_validator infinity input usage:
+    >>> bg.integer_validator("holberton", float("inf"))
+    Traceback (most recent call last):
+    ...
+    TypeError: holberton must be an integer
 
-Test case #0: A test case with good parameters
-    
-    >>> bg.integer_validator("my_int", 12)
+Function integer_validator large int input usage:
+    >>> bg.integer_validator("holberton", 9999999999999999999999999)
 
+Function integer_validator float input usage:
+    >>> bg.integer_validator("holberton", 90.8)
+    Traceback (most recent call last):
+    ...
+    TypeError: holberton must be an integer
 
-Test case #1: A test case with good parameters
+Function integer_validator list usage:
+    >>> bg.integer_validator("holberton", [90])
+    Traceback (most recent call last):
+    ...
+    TypeError: holberton must be an integer
 
-    >>> bg.integer_validator("width", 89)
-
-
-Section // Type Errors
-=========================
-
-Test case #2: A test case with a not integer value
-
-    >>> try:
-    ...     bg.integer_validator("name", "John")
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-Test case #3: A test case with a infinite float value
-
-    >>> try:
-    ...     bg.integer_validator("inf_float", 1e400)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] inf_float must be an integer
-
-Test case #4: A test case with a NaN value
-
-    >>> try:
-    ...     bg.integer_validator("nan", float('nan'))
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] nan must be an integer
-
-Test case #5: A test case with a boolean value
-
-    >>> try:
-    ...     bg.integer_validator("name", True)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-Test case #6: A test case with a tuple value
-
-    >>> try:
-    ...     bg.integer_validator("name", (4, ))
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-Test case #7: A test case with a string value
-
-    >>> try:
-    ...     bg.integer_validator("name", 'Monty Python')
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-Test case #8: A test case with a none value
-
-    >>> try:
-    ...     bg.integer_validator("name", None)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-Test case #9: A test case with a list value
-
-    >>> try:
-    ...     bg.integer_validator("name", [])
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-Test case #10: A test case with a dictionary value
-
-    >>> try:
-    ...     bg.integer_validator("name", {3, 4})
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-Test case #11: A test case with a class value
-
-    >>> try:
-    ...     bg.integer_validator("name", object)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-Test case #12: A test case without value
-
-    >>> try:
-    ...     bg.integer_validator("name")
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] integer_validator() missing 1 required positional argument: 'value'
-
-Test case #13: A test case without value
-
-    >>> try:
-    ...     bg.integer_validator()
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
-
-Section // Value Errors
-=========================
-
-Test case #14: A test case with zero as value
-
-    >>> try:
-    ...     bg.integer_validator("age", 0)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [ValueError] age must be greater than 0
-
-Test case #15: A test case with a value less than zero
-
-    >>> try:
-    ...     bg.integer_validator("distance", -4)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [ValueError] distance must be greater than 0
-
-
-Section // General Errors
-=========================
-
-Test case #16: A test case with a not available method
-
-    >>> try:
-    ...     bg.area()
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [Exception] area() is not implemented
+Function integer_validator no input usage:
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
