@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""contains function that writes a python object to a text file"""
+"""contains a function that writes an obj's json rep to a text file"""
 
 import json
 
