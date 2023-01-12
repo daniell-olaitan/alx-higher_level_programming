@@ -12,4 +12,4 @@ if __name__ == '__main__':
     except FileNotFoundError:
         res = []
 
-    save_to_json_file(res.extend(sys.argv[1:]), filename)
+    save_to_json_file(res + sys.argv[1:], filename)
