@@ -17,3 +17,5 @@ def pascal_triangle(n):
                 tmp.append(res[-1][j] + res[-1][j-1])
 
         res.append(tmp)
+
+    return res
