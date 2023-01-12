@@ -19,4 +19,4 @@ class Student:
 
             return res
 
-        return vars(sef)
+        return vars(self)
