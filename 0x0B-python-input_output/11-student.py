@@ -21,3 +21,10 @@ class Student:
             return res
 
         return vars(self)
+
+    def reload_from_json(self, json):
+        """replaces all the attr of the Student obj"""
+        var = vars(self)
+        for attr, value in json.items():
+            if attr in var:
+                setattr(self, attr, value)
