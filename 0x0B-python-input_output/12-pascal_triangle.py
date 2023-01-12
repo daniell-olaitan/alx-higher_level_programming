@@ -4,7 +4,7 @@
 
 def pascal_triangle(n):
     """returns a pascal triangle of a given length"""
-    res []
+    res = []
     if n <= 0:
         return res
 
