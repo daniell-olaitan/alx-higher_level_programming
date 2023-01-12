@@ -19,5 +19,5 @@ class Student:
     def reload_from_json(self, json):
         """replaces all the attr of the Student obj"""
         for attr, value in json.items():
-            if hasattr(attr):
+            if hasattr(self, attr):
                 setattr(self, attr, value)
