@@ -35,8 +35,12 @@ if __name__ == "__main__":
                 key = line[-2]
                 if key in status_codes:
                     status_codes[key] += 1
-                    total_size += int(line[-1])
                     line_count += 1
+            except IndexError:
+                pass
+
+            try:
+                total_size += int(line[-1])
             except (IndexError, ValueError):
                 pass
 
