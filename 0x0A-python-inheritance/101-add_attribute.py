@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""Function add_attribute
-"""
+"""this module defines a function that adds attributes to objects"""
 
 
 def add_attribute(a_class, name, value):
-    """Adds new attribute to an object if it's possible"""
+    """Add a new attribute to an object if possible
+    """
+    if not hasattr(a_class, "__dict__"):
+        raise TypeError("can't add new attribute")
 
-    if hasattr(a_class, "__dict__"):
-        setattr(a_class, name, value)
-
-    raise TypeError("can't add new attribute")
+    setattr(a_class, name, value)
