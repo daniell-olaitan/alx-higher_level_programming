@@ -2,7 +2,7 @@
 """contains a func that determines if an objs class inherits from a class"""
 
 
-def inherits_from(obj, a_cass):
+def inherits_from(obj, a_class):
     """determines if an objs class inherites from a class"""
     cls = type(obj)
     if cls is a_class:
