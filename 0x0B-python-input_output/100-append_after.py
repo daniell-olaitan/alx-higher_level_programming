@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """contains a func that inserts a line of text to a file"""
-import json
 
 
 def append_after(filename="", search_string="", new_string=""):
