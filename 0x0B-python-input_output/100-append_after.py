@@ -12,7 +12,7 @@ def append_after(filename="", search_string="", new_string=""):
         new_string: string to insert
     """
     lines = []
-    if filename and search_string
+    if filename and search_string:
         with open(filename, "r", encoding="utf-8") as fd:
             lines += fd.readlines()
 
