@@ -38,10 +38,10 @@ class Rectangle(Base):
     def x(self, value):
         self.__x = value
 
-    @y.setter
-    def y(self, value):
-          self.__y = value
-
     @property
     def y(self):
         return self.__y
+
+    @y.setter
+    def y(self, value):
+          self.__y = value
