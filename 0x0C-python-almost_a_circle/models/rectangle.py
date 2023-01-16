@@ -61,3 +61,7 @@ class Rectangle(Base):
         """displays the rectangle using '#'"""
         rect = ['#' * self.width] * self.height
         print('\n'.join(rect))
+
+    def __str__(self):
+        sp = "[Rectangle]"
+        s = f"{sp} ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
