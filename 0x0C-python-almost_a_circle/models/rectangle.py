@@ -24,6 +24,7 @@ class Rectangle(Base):
 
     @property
     def height(self):
+        """gets and sets the attr"""
         return self.__height
 
     @height.setter
@@ -32,6 +33,7 @@ class Rectangle(Base):
 
     @property
     def x(self):
+        """gets and sets the attr"""
         return self.__x
 
     @x.setter
@@ -40,6 +42,7 @@ class Rectangle(Base):
 
     @property
     def y(self):
+        """gets and sets the attr"""
         return self.__y
 
     @y.setter
