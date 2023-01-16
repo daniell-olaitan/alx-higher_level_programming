@@ -20,6 +20,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
+        self.validate_variable("width", value)
         self.__width = value
 
     @property
@@ -29,6 +30,7 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
+        self.validate_variable("height", value)
         self.__height = value
 
     @property
@@ -38,6 +40,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, value):
+        self.validate_variable("x", value, False)
         self.__x = value
 
     @property
@@ -47,4 +50,5 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, value):
+        self.validate_variable("y", value, False)
         self.__y = value

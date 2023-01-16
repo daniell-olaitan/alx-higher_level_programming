@@ -13,3 +13,15 @@ class Base:
         else:
             type(self).__nb_objects += 1
             self.id = type(self).__nb_objects
+
+    @staticmethod
+    def validate_variable(name, value, greater=True):
+        """validates an assigned variable"""
+        if type(value) is not int:
+            raise TypeError(f"{name} must be an integer")
+
+        if value <= 0:
+            if greater:
+                raise ValueError(f"{name} must be > 0")
+            elif value < 0:
+                raise ValueError(f"{name} must be >= 0")
