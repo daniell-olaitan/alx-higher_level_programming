@@ -68,3 +68,12 @@ class Rectangle(Base):
         sp = "[Rectangle]"
         s = f"{sp} ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
         return s
+
+    def update(self, *args):
+        """updates the values of some or all the attributes"""
+        attr = ["id", "width", "height", "x", "y"]
+        for i, value in enumerate(args):
+            if i > 4:
+                break
+
+            setattr(self, attr[i], value)
