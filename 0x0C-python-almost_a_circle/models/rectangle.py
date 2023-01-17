@@ -59,7 +59,9 @@ class Rectangle(Base):
 
     def display(self):
         """displays the rectangle using '#'"""
-        rect = ['#' * self.width] * self.height
+        print('\n' * self.y, end="")
+        space = self.x * ' '
+        rect = [space + ('#' * self.width)] * self.height
         print('\n'.join(rect))
 
     def __str__(self):
