@@ -82,3 +82,12 @@ class Rectangle(Base):
                     break
 
                 setattr(self, attr[i], value)
+
+
+    def to_dictionary(self):
+        """returns the dictionary representation of the object"""
+        res = {}
+        for key in ["id", "width", "height", "x", "y"]:
+            res[key] = getattr(self, key)
+
+        return res
