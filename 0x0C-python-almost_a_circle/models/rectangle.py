@@ -69,11 +69,16 @@ class Rectangle(Base):
         s = f"{sp} ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
         return s
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """updates the values of some or all the attributes"""
         attr = ["id", "width", "height", "x", "y"]
-        for i, value in enumerate(args):
-            if i > 4:
-                break
+        if not args:
+            for key, value in kwargs.items():
+                if key in attr:
+                    setattr(self, key, value)
+        else:
+            for i, value in enumerate(args):
+                if i > 4:
+                    break
 
-            setattr(self, attr[i], value)
+                setattr(self, attr[i], value)
