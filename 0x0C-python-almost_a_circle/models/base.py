@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """contains a class that defines the base class"""
+import json
 
 
 class Base:
@@ -25,3 +26,10 @@ class Base:
                 raise ValueError(f"{name} must be > 0")
             elif value < 0:
                 raise ValueError(f"{name} must be >= 0")
+
+    @staticmethod    
+    def to_json_string(list_dixtionaries):
+        if not list_dictionaries:
+            return '"[]"'
+
+        return json.dumps(list_dictionaries)
