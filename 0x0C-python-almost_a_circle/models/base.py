@@ -28,7 +28,7 @@ class Base:
                 raise ValueError(f"{name} must be >= 0")
 
     @staticmethod    
-    def to_json_string(list_dixtionaries):
+    def to_json_string(list_dictionaries):
         if not list_dictionaries:
             return '"[]"'
 
