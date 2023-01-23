@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """contains a class that defines the base class"""
 import json
+import os
 
 
 class Base:
@@ -64,3 +65,18 @@ class Base:
 
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        filename = cls.__name__ + ".json"
+        res = []
+        if os.path.exists(filename):
+            with open(filename, "r", encoding="utf-8") as fd:
+                json_string = fd.read()
+                list_of_dicts = cls.from_json_string(json_string)
+                res = [cls.create(**attrs) for attrs in list_of_dicts]
+
+                return res
+
+        return res
