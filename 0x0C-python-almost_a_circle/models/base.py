@@ -83,7 +83,7 @@ class Base:
 
         return res
 
-     @classmethod
+    @classmethod
     def save_to_file_csv(cls, list_objs):
         """Serializes list_objs and saves to file"""
         filename = cls.__name__ + ".csv"
