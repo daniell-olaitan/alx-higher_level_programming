@@ -1,16 +1,19 @@
 #!/usr/bin/node
 
-const c = 'X';
 const size = parseInt(process.argv[2]);
 
 if (size) {
-    for (let i = 0; i < size; ++i) {
-	for (let j = 0; j < size; ++j) {
-	    process.stdout.write(c);
-	}
+  for (let i = 0; i < size; ++i) {
+    let j = 0;
 
-	console.log('');
+    for (; j < size; ++j) {
+      process.stdout.write('X');
     }
+
+    if (j === size) {
+      console.log('');
+    }
+  }
 } else {
-    concole.log('Missing size');
+  console.log('Missing size');
 }
