@@ -12,7 +12,7 @@ if __name__ == '__main__':
                          passwd=argv[2], database=argv[3])
     cur = db.cursor()
     query = "SELECT * FROM states \
-             WHERE name LIKE 'N%' \
+             WHERE name LIKE BINARY 'N%' \
              ORDER BY id"
     cur.execute(query)
     rows = cur.fetchall()
