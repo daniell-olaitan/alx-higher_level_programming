@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-lists the State object with the name passed as an arg from the given database
+changes the name of  State object from the given database
 """
 
 from sys import argv
@@ -14,9 +14,7 @@ if __name__ == '__main__':
     engine = create_engine(db_url)
     Session = sessionmaker(bind=engine)
     session = Session()
-    first_row = session.query(State).filter(
-        State.name == argv[4]).first()
-    if first_row is None:
-        print("Not found")
-    else:
-        print(first_row.id)
+    state = session.get(2)
+    if state is not None:
+        state.name = "New Mexico"
+        session.commit()
