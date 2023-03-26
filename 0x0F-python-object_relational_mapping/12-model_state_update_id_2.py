@@ -14,7 +14,9 @@ if __name__ == '__main__':
     engine = create_engine(db_url)
     Session = sessionmaker(bind=engine)
     session = Session()
-    state = session.get(2)
+    state = session.query(State).filter(State.id == 2).first()
     if state is not None:
         state.name = "New Mexico"
         session.commit()
+
+    session.close()
