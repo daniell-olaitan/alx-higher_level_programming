@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Takes a url, sends a request and displays the body of the 
+Takes a url, sends a request and displays the body of the
 response
 """
 
