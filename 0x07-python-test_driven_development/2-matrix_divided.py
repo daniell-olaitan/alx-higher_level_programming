@@ -16,12 +16,23 @@ def matrix_divided(matrix, div):
     list_err = "matrix must be a matrix (list of lists) of integers/floats"
     size_err = "Each row of the matrix must have the same size"
     res = []
+    if div == 0:
+        raise ZeroDivisionError('division by zero')
+
     if (type(matrix) is not list or
-        len(matrix) < 2 or
         sum(1 for _ in filter(lambda x: type(x) is not list, matrix)) != 0 or
-        sum(1 for _ in filter(lambda x: len(x) < 2, matrix)) != 0 or
         sum(1 for _ in filter(lambda x: type(x) not in [int, float],
-                              [e[i] for e in matrix for i, j in matrix]) != 0):
+                              [c for e in matrix for c in e])) != 0):
         raise TypeError(list_err)
+
+    elif len({len(e) for e in matrix}) > 1:
+        raise TypeError(size_err)
+
+    elif type(div) not in [int, float]:
+        raise TypeError('div must be a number')
+
     else:
-        
+        for e in matrix:
+            res.append([round(i/div, 2) for i in e])
+
+        return res
