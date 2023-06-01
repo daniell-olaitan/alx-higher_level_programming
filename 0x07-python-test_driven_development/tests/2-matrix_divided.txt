@@ -21,7 +21,7 @@ Test Case 1: matrix parameter is absent
      >>> matrix_divided()
      Traceback (most recent call last):
        ...
-     TypeError: matrix_divided() missing 2 required positional arguments: 'matrix and 'div'
+     TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 
 Test Case 3: matrix incorrect
      >>> matrix_divided([[2, 1.2], [5]], 3)
@@ -34,7 +34,7 @@ Test Case 3: matrix incorrect
        ...
      TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-     >>> matrix_divided({[2, 1.2], [5, 3]}, 3)
+     >>> matrix_divided(([2, 1.2], [5, 3]), 3)
      Traceback (most recent call last):
        ...
      TypeError: matrix must be a matrix (list of lists) of integers/floats
